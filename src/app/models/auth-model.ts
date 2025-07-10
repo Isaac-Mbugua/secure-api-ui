@@ -1,10 +1,13 @@
 export interface Register {
-  firstname: string;
-  lastname: string;
+  id?: string;
+  firstName: string;
+  lastName: string;
   email: string;
   phone: string;
   password: string;
   role?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface Login {

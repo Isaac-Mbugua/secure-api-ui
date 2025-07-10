@@ -1,1 +1,47 @@
-<p>homepage works!</p>
+<!-- Fetch Button -->
+<div class="flex justify-center mt-6">
+    <button (click)="loadProfile()"
+        class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        [disabled]="status==='loading'">
+        {{ status ==='loading' ? 'Loading...' : 'Load Profile' }}
+    </button>
+</div>
+
+
+<!-- User Info Card -->
+<div *ngIf="user" class="max-w-md mx-auto mt-6 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+    <h2 class="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-4 text-center">
+        User Profile
+    </h2>
+
+    <div class="space-y-3 text-sm text-gray-800 dark:text-gray-100">
+        <div class="flex justify-between">
+            <span class="font-medium text-gray-700 dark:text-gray-200">First Name:</span>
+            <span>{{ user.firstName }}</span>
+        </div>
+        <div class="flex justify-between">
+            <span class="font-medium text-gray-700 dark:text-gray-200">Last Name:</span>
+            <span>{{ user.lastName }}</span>
+        </div>
+        <div class="flex justify-between">
+            <span class="font-medium text-gray-700 dark:text-gray-200">Email:</span>
+            <span>{{ user.email }}</span>
+        </div>
+        <div class="flex justify-between">
+            <span class="font-medium text-gray-700 dark:text-gray-200">Phone:</span>
+            <span>{{ user.phone }}</span>
+        </div>
+        <div class="flex justify-between">
+            <span class="font-medium text-gray-700 dark:text-gray-200">Role:</span>
+            <span class="capitalize">{{ user.role }}</span>
+        </div>
+    </div>
+
+    <!-- Logout Button -->
+    <div class="mt-6 flex justify-center">
+        <button (click)="logout()"
+            class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+            Log Out
+        </button>
+    </div>
+</div>

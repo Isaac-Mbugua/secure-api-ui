@@ -48,4 +48,9 @@ export class Auth {
         catchError((error) => ErrorHandler.errorHandler(error, this.router))
       );
   }
+
+  logout(): void {
+    localStorage.removeItem('authToken');
+    this.router.navigate(['/auth']);
+  }
 }

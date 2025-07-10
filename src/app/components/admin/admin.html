@@ -1,1 +1,83 @@
-<p>admin works!</p>
+<!-- Fetch Button -->
+<div class="flex justify-center gap-4 mt-6">
+    <button (click)="loadProfile()"
+        class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        [disabled]="status==='loading'">
+        {{ status ==='loading' ? 'Loading...' : 'Load Profile' }}
+    </button>
+
+    <!-- Load All Users Button -->
+    <button (click)="loadAllUsers()"
+        class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+        [disabled]="userStatus === 'loading'">
+        {{ userStatus === 'loading' ? 'Loading...' : 'Load All Users' }}
+    </button>
+
+</div>
+
+
+
+
+<!-- User Info Card -->
+<div *ngIf="user" class="max-w-md mx-auto mt-6 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+    <h2 class="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-4 text-center">
+        User Profile
+    </h2>
+
+    <div class="space-y-3 text-sm text-gray-800 dark:text-gray-100">
+        <div class="flex justify-between">
+            <span class="font-medium text-gray-700 dark:text-gray-200">First Name:</span>
+            <span>{{ user.firstName }}</span>
+        </div>
+        <div class="flex justify-between">
+            <span class="font-medium text-gray-700 dark:text-gray-200">Last Name:</span>
+            <span>{{ user.lastName }}</span>
+        </div>
+        <div class="flex justify-between">
+            <span class="font-medium text-gray-700 dark:text-gray-200">Email:</span>
+            <span>{{ user.email }}</span>
+        </div>
+        <div class="flex justify-between">
+            <span class="font-medium text-gray-700 dark:text-gray-200">Phone:</span>
+            <span>{{ user.phone }}</span>
+        </div>
+        <div class="flex justify-between">
+            <span class="font-medium text-gray-700 dark:text-gray-200">Role:</span>
+            <span class="capitalize">{{ user.role }}</span>
+        </div>
+    </div>
+
+    <!-- Logout Button -->
+    <div class="mt-6 flex justify-center">
+        <button (click)="logout()"
+            class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+            Log Out
+        </button>
+    </div>
+</div>
+
+
+<!-- Users Table -->
+<div *ngIf="users && users.length > 0" class="overflow-x-auto mt-6 max-w-5xl mx-auto">
+    <table class="min-w-full bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+        <thead>
+            <tr class="bg-blue-600 dark:bg-blue-700 text-white text-left text-sm">
+                <th class="px-4 py-2">First Name</th>
+                <th class="px-4 py-2">Last Name</th>
+                <th class="px-4 py-2">Email</th>
+                <th class="px-4 py-2">Phone</th>
+                <th class="px-4 py-2">Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users"
+                class="border-b border-gray-200 dark:border-gray-700 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">
+                <td class="px-4 py-2 text-gray-800 dark:text-gray-100">{{ user.firstName }}</td>
+                <td class="px-4 py-2 text-gray-800 dark:text-gray-100">{{ user.lastName }}</td>
+                <td class="px-4 py-2 text-gray-800 dark:text-gray-100">{{ user.email }}</td>
+                <td class="px-4 py-2 text-gray-800 dark:text-gray-100">{{ user.phone }}</td>
+                <td class="px-4 py-2 capitalize text-gray-800 dark:text-gray-100">{{ user.role }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
