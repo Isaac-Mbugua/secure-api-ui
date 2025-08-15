@@ -10,7 +10,8 @@ import { ErrorHandler } from '../../utils/error-handler';
 })
 export class User {
   constructor(private http: HttpClient, private router: Router) {}
-  apiUrl: string = 'https://secure-api-authentication-production.up.railway.app/api';
+  apiUrl: string = 'http://localhost:3000/api';
+  // 'https://secure-api-authentication-production.up.railway.app/api';
 
   getUserProfile(): Observable<{ user: Register }> {
     return this.http

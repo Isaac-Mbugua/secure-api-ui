@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Login, Register } from '../../models/auth-model';
+import { Login, Otp, Register } from '../../models/auth-model';
 import { catchError, Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ErrorHandler } from '../../utils/error-handler';
@@ -9,7 +9,8 @@ import { ErrorHandler } from '../../utils/error-handler';
   providedIn: 'root',
 })
 export class Auth {
-  apiUrl: string = 'https://secure-api-authentication-production.up.railway.app/api';
+  apiUrl: string = 'http://localhost:3000/api';
+  // 'https://secure-api-authentication-production.up.railway.app/api';
   constructor(private router: Router, private http: HttpClient) {}
 
   isAuthenticated(): boolean {
@@ -45,6 +46,14 @@ export class Auth {
         tap((response) => {
           localStorage.setItem('authToken', response.token);
         }),
+        catchError((error) => ErrorHandler.errorHandler(error, this.router))
+      );
+  }
+
+  verifyOtp(otp: Otp): Observable<{ message: string }> {
+    return this.http
+      .post<{ message: string }>(`${this.apiUrl}/verify-otp`, otp)
+      .pipe(
         catchError((error) => ErrorHandler.errorHandler(error, this.router))
       );
   }

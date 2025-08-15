@@ -15,6 +15,10 @@ export interface Login {
   password: string;
 }
 
+export interface Otp {
+  otp: string;
+}
+
 export interface JWTPayload {
   id: string;
   name: string;

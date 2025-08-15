@@ -9,7 +9,8 @@
 
 
 <!-- User Info Card -->
-<div *ngIf="user" class="max-w-md mx-auto mt-6 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+@if (user) {
+<div class="max-w-md mx-auto mt-6 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
     <h2 class="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-4 text-center">
         User Profile
     </h2>
@@ -45,3 +46,4 @@
         </button>
     </div>
 </div>
+}

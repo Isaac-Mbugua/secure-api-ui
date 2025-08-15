@@ -6,6 +6,7 @@ import { Homepage } from './components/homepage/homepage';
 import { Admin } from './components/admin/admin';
 import { authGuard } from './guards/auth-guard';
 import { adminGuard } from './guards/admin-guard';
+import { VerifyOtp } from './components/auth/verify-otp/verify-otp';
 
 export const routes: Routes = [
   {
@@ -15,6 +16,7 @@ export const routes: Routes = [
     children: [
       { path: '', component: Login },
       { path: 'register', component: Register },
+      { path: 'verify-otp', component: VerifyOtp },
     ],
   },
   {

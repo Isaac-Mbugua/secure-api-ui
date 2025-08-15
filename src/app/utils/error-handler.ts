@@ -5,7 +5,12 @@ import { throwError } from 'rxjs';
 export class ErrorHandler {
   static errorHandler(error: HttpErrorResponse, router: Router) {
     if (error.status === 401) {
-      router.navigate(['auth']);
+      const message = error.error.message.toLowerCase() || '';
+      if (message.includes('token expired') || message.includes('expired')) {
+        router.navigate(['auth', 'verify-otp']);
+      } else {
+        router.navigate(['auth']);
+      }
     }
 
     let errorMsg = 'An unknown error occurred!';
