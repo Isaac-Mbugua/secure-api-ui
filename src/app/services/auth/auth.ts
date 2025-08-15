@@ -9,8 +9,8 @@ import { ErrorHandler } from '../../utils/error-handler';
   providedIn: 'root',
 })
 export class Auth {
-  apiUrl: string = 'http://localhost:3000/api';
-  // 'https://secure-api-authentication-production.up.railway.app/api';
+  apiUrl: string =
+    'https://secure-api-authentication-production.up.railway.app/api';
   constructor(private router: Router, private http: HttpClient) {}
 
   isAuthenticated(): boolean {
